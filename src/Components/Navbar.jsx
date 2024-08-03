@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState('Home');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
     setIsMenuOpen(false); // Close the menu on link click
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false); // Close the menu if clicking outside
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <div>
@@ -26,7 +38,7 @@ const Navbar = () => {
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
-          </button>
+          </button> 
         </div>
 
         {/* Middle part: Nav links (visible on larger screens) */}
@@ -56,14 +68,17 @@ const Navbar = () => {
 
         {/* Right part: Sign In button */}
         <div className={`hidden lg:block ${isMenuOpen ? 'hidden' : ''}`}>
-          <button className="bg-blue-500 text-white px-6 py-2 rounded-full transform -rotate-25 lg:mr-4 hover:bg-orange-500">
-            Sign In
+          <button className="bg-blue-500 text-white px-6 py-2 rounded-full transform -rotate-25 lg:mr-4 hover:bg-orange-900">
+            Log In
           </button>
         </div>
       </nav>
 
       {/* Mobile Menu */}
-      <div className={`lg:hidden ${isMenuOpen ? 'block' : 'hidden'} absolute top-16 left-0 w-full bg-white shadow-md`}>
+      <div 
+        ref={menuRef}
+        className={`lg:hidden fixed top-16 left-0 w-full bg-white shadow-md ${isMenuOpen ? 'block' : 'hidden'}`}
+      >
         <div className="flex flex-col items-center space-y-4 py-4">
           <a
             href="https://www.ienetworksolutions.com/"
@@ -86,13 +101,13 @@ const Navbar = () => {
           >
             Contact Us
           </a>
-          <button className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-orange-500">
-            Sign In
+          <button className="bg-blue-500 text-white px-6 py-2 rounded-full hover:bg-orange-900">
+            Log In
           </button>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;
