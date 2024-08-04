@@ -10,6 +10,10 @@ const Navbar = () => {
     setIsMenuOpen(false); // Close the menu on link click
   };
 
+  const handleToggleMenu = () => {
+    setIsMenuOpen((prevState) => !prevState);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -33,12 +37,12 @@ const Navbar = () => {
         <div className="block lg:hidden">
           <button
             className="text-black focus:outline-none"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={handleToggleMenu}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
-          </button> 
+          </button>
         </div>
 
         {/* Middle part: Nav links (visible on larger screens) */}
@@ -77,7 +81,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div 
         ref={menuRef}
-        className={`lg:hidden fixed top-16 left-0 w-full bg-white shadow-md ${isMenuOpen ? 'block' : 'hidden'}`}
+        className={`lg:hidden fixed top-16 left-0 w-full bg-white shadow-md ${isMenuOpen ? 'block' : 'hidden'} z-50`}
       >
         <div className="flex flex-col items-center space-y-4 py-4">
           <a

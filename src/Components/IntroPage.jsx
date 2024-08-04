@@ -7,7 +7,7 @@ const IntroPage = () => {
       {/* Left Side: Text */}
       <div className="w-full lg:w-2/3 mb-8 lg:mb-0 lg:mr-8 flex flex-col justify-center lg:items-start px-4">
         <h1 className="text-5xl lg:text-8xl font-extrabold mb-4 text-[#4864E1] leading-tight tracking-tight">
-          Are you ready
+          Are You Ready
         </h1>
         <h2 className="text-2xl lg:text-6xl font-bold mb-4">
           to work with us ?
