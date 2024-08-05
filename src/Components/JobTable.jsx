@@ -37,7 +37,7 @@ const JobTable = () => {
                 className="border-b hover:bg-gray-50 cursor-pointer"
                 onClick={() => handleRowClick(link)}
               >
-                <td className="py-4 px-3 text-sm lg:text-base text-gray-800 font-semibold text-center text-blue-600">
+                <td className="py-4 px-3 text-sm lg:text-base text-gray-800 font-semibold text-center">
                   Networking {index + 1}
                 </td>
                 <td className="py-4 px-3 text-sm lg:text-base text-gray-500 text-center">Addis Ababa, Ethiopia</td>
