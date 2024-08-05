@@ -1,11 +1,11 @@
 import './App.css';
-import SingleJob from './Layouts/SingleJob';
+import Home from './Layouts/Home';
 
 function App() {
   return (
     <>
     <div className="App">
-      <SingleJob/>
+      <Home/>
     </div>
     </>
   );
