@@ -4,6 +4,7 @@ import IntroPage from "../Components/IntroPage";
 import Cards from "../Components/Cards";
 import JobTable from "../Components/JobTable";
 
+
 function Home() {
     return (
       <>
