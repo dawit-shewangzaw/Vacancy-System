@@ -1,11 +1,11 @@
 import './App.css';
-import Home from './Layouts/Home';
+import LogIn from './Layouts/LogIn';
 
 function App() {
   return (
     <>
     <div className="App">
-      <Home/>
+      <LogIn/>
     </div>
     </>
   );
