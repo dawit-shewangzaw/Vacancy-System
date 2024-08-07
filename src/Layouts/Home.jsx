@@ -4,6 +4,7 @@ import IntroPage from "../Components/IntroPage";
 import Cards from "../Components/Cards";
 import JobTable from "../Components/JobTable";
 import Footer from "../Components/Footer";
+import Apply from "../Components/Apply";
 
 
 function Home() {
@@ -11,9 +12,7 @@ function Home() {
       <>
       <div>
             <Navbar/>
-            <IntroPage/>
-            <Cards/>
-            <JobTable/>
+            <Apply/>
             <Footer/>
       </div>
       </>
