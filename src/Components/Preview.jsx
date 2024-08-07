@@ -12,33 +12,38 @@ const Preview = () => {
   const requirementQualification = queryParams.get('requirementQualification');
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center p-4 pt-24"> {/* Added pt-24 for top padding */}
+    <div className="min-h-screen bg-gray-100 flex flex-col justify-center items-center p-4 pt-24">
       <div className="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
         <h1 className="text-3xl font-bold text-black mb-6 text-center">Post Preview</h1>
 
-        <div className="space-y-4">
-          <div>
-            <h2 className="text-lg font-medium text-black">Title:</h2>
+        <div className="space-y-6">
+          {/* Title */}
+          <div className="relative bg-gray-50 p-4 border border-gray-300 rounded-md">
+            <span className="absolute -top-4 left-4 bg-white px-2 text-lg font-medium text-black">Title:</span>
             <p className="text-black">{title}</p>
           </div>
 
-          <div>
-            <h2 className="text-lg font-medium text-black">Work Place:</h2>
+          {/* Work Place */}
+          <div className="relative bg-gray-50 p-4 border border-gray-300 rounded-md">
+            <span className="absolute -top-4 left-4 bg-white px-2 text-lg font-medium text-black">Work Place:</span>
             <p className="text-black">{workPlace}</p>
           </div>
 
-          <div>
-            <h2 className="text-lg font-medium text-black">Team Leader:</h2>
+          {/* Team Leader */}
+          <div className="relative bg-gray-50 p-4 border border-gray-300 rounded-md">
+            <span className="absolute -top-4 left-4 bg-white px-2 text-lg font-medium text-black">Team Leader:</span>
             <p className="text-black">{teamLeader}</p>
           </div>
 
-          <div>
-            <h2 className="text-lg font-medium text-black">Responsibility:</h2>
+          {/* Responsibility */}
+          <div className="relative bg-gray-50 p-4 border border-gray-300 rounded-md">
+            <span className="absolute -top-4 left-4 bg-white px-2 text-lg font-medium text-black">Responsibility:</span>
             <p className="text-black whitespace-pre-line">{responsibility}</p>
           </div>
 
-          <div>
-            <h2 className="text-lg font-medium text-black">Requirement Qualification:</h2>
+          {/* Requirement Qualification */}
+          <div className="relative bg-gray-50 p-4 border border-gray-300 rounded-md">
+            <span className="absolute -top-4 left-4 bg-white px-2 text-lg font-medium text-black">Requirement Qualification:</span>
             <p className="text-black whitespace-pre-line">{requirementQualification}</p>
           </div>
         </div>
