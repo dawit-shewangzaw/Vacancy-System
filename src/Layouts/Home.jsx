@@ -1,10 +1,8 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
-import IntroPage from "../Components/IntroPage";
-import Cards from "../Components/Cards";
-import JobTable from "../Components/JobTable";
 import Footer from "../Components/Footer";
-import Apply from "../Components/Apply";
+import  Request from "../Components/Request";
+
 
 
 function Home() {
@@ -12,7 +10,7 @@ function Home() {
       <>
       <div>
             <Navbar/>
-            <Apply/>
+            <Request/>
             <Footer/>
       </div>
       </>
