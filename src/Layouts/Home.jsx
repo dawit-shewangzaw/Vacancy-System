@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import  Request from "../Components/Request";
+import ApplicantsList from "../Components/ApplicantsList";
+
 
 
 
@@ -10,7 +11,7 @@ function Home() {
       <>
       <div>
             <Navbar/>
-            <Request/>
+            <ApplicantsList/>
             <Footer/>
       </div>
       </>
