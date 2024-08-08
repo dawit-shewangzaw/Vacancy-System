@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import ApplicantsList from "../Components/ApplicantsList";
+import Notification from "../Components/Notification";
 
 
 
@@ -11,7 +11,7 @@ function Home() {
       <>
       <div>
             <Navbar/>
-            <ApplicantsList/>
+            <Notification/>
             <Footer/>
       </div>
       </>
