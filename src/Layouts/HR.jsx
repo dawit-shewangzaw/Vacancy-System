@@ -7,14 +7,18 @@ import Footer from "../Components/Footer";
 import NewPost from "../Components/NewPost";
 import Preview from "../Components/Preview";
 import ApplicationS from "../Components/Application";
+import ApplicantDetail from "../Components/ApplicantDetail";
 
 function HR() {
     return (
       <>
       <Navbar/>
-      <BrowserRouter>
+      {/*<BrowserRouter>
         <ApplicationS/>
-      </BrowserRouter>
+      </BrowserRouter>*/}
+      <Router>
+      <ApplicantDetail/>
+      </Router>
         {/*<Router>
             <Routes>
                 <Route path="/" element={<NewPost />} />
