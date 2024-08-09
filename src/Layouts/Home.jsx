@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import Notification from "../Components/Notification";
+import NotificationDetail from "../Components/NotificationDetail";
 
 
 
@@ -11,7 +11,7 @@ function Home() {
       <>
       <div>
             <Navbar/>
-            <Notification/>
+            <NotificationDetail/>
             <Footer/>
       </div>
       </>
