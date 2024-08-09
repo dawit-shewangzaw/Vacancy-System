@@ -1,8 +1,9 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
+import IntroPage from "../Components/IntroPage";
+import Cards from "../Components/Cards";
+import JobTable from "../Components/JobTable";
 import Footer from "../Components/Footer";
-import NotificationDetail from "../Components/NotificationDetail";
-
 
 
 
@@ -11,7 +12,9 @@ function Home() {
       <>
       <div>
             <Navbar/>
-            <NotificationDetail/>
+            <IntroPage/>
+            <Cards/>
+            <JobTable/>          
             <Footer/>
       </div>
       </>
