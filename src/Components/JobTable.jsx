@@ -1,18 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const JobTable = () => {
+  // Updated jobLinks array to include 20 items
   const jobLinks = [
-    'https://example.com/job1',
-    'https://example.com/job2',
-    'https://example.com/job3',
-    'https://example.com/job4',
-    'https://example.com/job5',
-    'https://example.com/job6',
+    'Networking Job 1',
+    'Networking Job 2',
+    'Networking Job 3',
+    'Networking Job 4',
+    'Networking Job 5',
+    'Networking Job 6',
+    'Networking Job 7',
+    'Networking Job 8',
+    'Networking Job 9',
+    'Networking Job 10',
+    'Networking Job 11',
+    'Networking Job 12',
+    'Networking Job 13',
+    'Networking Job 14',
+    'Networking Job 15',
+    'Networking Job 16',
+    'Networking Job 17',
+    'Networking Job 18',
+    'Networking Job 19',
+    'Networking Job 20',
   ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
+  const itemsPerPage = 8;
 
   const handleRowClick = (url) => {
     window.location.href = url;
-  };  
+  };
+
+  const filteredJobs = jobLinks.filter(job =>
+    job.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const totalPages = Math.ceil(filteredJobs.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentJobs = filteredJobs.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePageChange = (page) => {
+    if (page > 0 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const handleSearch = () => {
+    setCurrentPage(1); // Reset to the first page on search
+  };
 
   return (
     <section className="py-12 px-4 lg:px-16 bg-[#F9F9FB]">
@@ -22,23 +59,44 @@ const JobTable = () => {
           <span className="block">Please first be sure that you meet all requirements for</span>
           <span className="block">the specific job you want to apply for.</span>
         </p>
+        <div className="mb-8 max-w-screen-lg mx-auto">
+          <div className="flex flex-col lg:flex-row items-center w-full">
+            <input
+              type="text"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              placeholder="Search a job"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-600 placeholder-gray-400 mb-4 lg:mb-0"
+            />
+            <button
+              onClick={handleSearch}
+              className="w-full lg:w-auto px-4 py-3 bg-[#4864E1] text-white rounded-lg ml-0 lg:ml-4 flex-shrink-0"
+            >
+              Find a Job
+            </button>
+          </div>
+        </div>
         <table className="min-w-full bg-white border border-gray-200 mx-auto max-w-full lg:max-w-screen-lg">
           <thead>
             <tr className="border-b bg-gray-200">
+              <th className="py-3 px-4 text-sm lg:text-base text-center text-gray-600">#</th>
               <th className="py-3 px-4 text-sm lg:text-base text-center text-gray-600">Job Name</th>
               <th className="py-3 px-4 text-sm lg:text-base text-center text-gray-600">Location</th>
               <th className="py-3 px-4 text-sm lg:text-base text-center text-gray-600">Post Time</th>
             </tr>
           </thead>
           <tbody>
-            {jobLinks.map((link, index) => (
+            {currentJobs.map((job, index) => (
               <tr
-                key={index}
+                key={startIndex + index}
                 className="border-b hover:bg-gray-50 cursor-pointer"
-                onClick={() => handleRowClick(link)}
+                onClick={() => handleRowClick(job)}
               >
+                <td className="py-4 px-3 text-sm lg:text-base text-gray-800 text-center">
+                  {startIndex + index + 1}
+                </td>
                 <td className="py-4 px-3 text-sm lg:text-base text-gray-800 font-semibold text-center">
-                  Networking {index + 1}
+                  {job}
                 </td>
                 <td className="py-4 px-3 text-sm lg:text-base text-gray-500 text-center">Addis Ababa, Ethiopia</td>
                 <td className="py-4 px-3 text-sm lg:text-base text-gray-500 text-center">Posted 2 days ago</td>
@@ -46,6 +104,25 @@ const JobTable = () => {
             ))}
           </tbody>
         </table>
+        <div className="flex justify-between items-center mt-4 max-w-screen-lg mx-auto">
+          <button
+            className="px-4 py-2 border border-gray-300 rounded-lg"
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            {'<'}
+          </button>
+          <span className="text-sm text-gray-600">
+            Showing {currentPage} of {totalPages}
+          </span>
+          <button
+            className="px-4 py-2 border border-gray-300 rounded-lg"
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            {'>'}
+          </button>
+        </div>
       </div>
     </section>
   );
