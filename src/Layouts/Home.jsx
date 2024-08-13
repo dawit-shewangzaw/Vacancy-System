@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import AdminNewEmployee from "../Components/AdminNewEmployee";
+import ApplicantDetail from "../Components/ApplicantDetail";
 
 
 
@@ -11,7 +11,7 @@ function Home() {
       <>
       <div>
             <Navbar/>
-            <AdminNewEmployee/>
+            <ApplicantDetail/>
             <Footer/>
       </div>
       </>

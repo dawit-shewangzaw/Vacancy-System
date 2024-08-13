@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const ApplicantDetail = () => {
   const [activeSection, setActiveSection] = useState('form');
   const [score, setScore] = useState('');
+  const [messageContent, setMessageContent] = useState('');  
 
   const applicant = {
     name: 'Dawit Shewnagzaw',
@@ -22,6 +23,10 @@ const ApplicantDetail = () => {
   const handleScoreChange = (e) => {
     setScore(e.target.value);
   };
+
+  const handleMessageContentChange = (e) => {
+    setMessageContent(e.target.value);
+  };  
 
   return (
     <div className="min-h-screen bg-gray-100 pt-16 pb-12 px-4 sm:px-6 lg:px-8 mt-12 overflow-x-hidden">
@@ -141,140 +146,98 @@ const ApplicantDetail = () => {
               <p className="mt-2 text-sm sm:text-base">Sincerely,<br />Dawit Shewnagzaw</p>
             </div>
           )}
-
+             
           {activeSection === 'email' && (
-            <div className="space-y-6">
-              {/* First Box */}
-              <div className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-base font-semibold">Form Result</h3>
-                  <div className="flex space-x-4">
-                    <button
-                      className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200"
-                    >
-                      Approve
-                    </button>
-                    <button
-                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200"
-                    >
-                      Decline
-                    </button>
-                  </div>
-                </div>
-                <div className="mt-2 flex items-center space-x-2">
-                  <label htmlFor="score" className="block text-sm text-black font-medium">Score:</label>
-                  <input
-                    type="number"
-                    id="score"
-                    name="score"
-                    value={score}
-                    onChange={handleScoreChange}
-                    className="border-gray-300 border rounded-md px-2 py-1 text-sm"
-                    min="0" // Ensures that the score cannot be less than 0
-                    max="100" // Adjusted max to a more reasonable value
-                  />
-                </div>
-                <p className="mt-2 text-sm text-black">Dear Fasika, </p>
-                <p className="mt-2 text-sm text-black">It is with great pleasure that I am announcing the promotion of Mathias Abdisa as one of the new Marketing Directors of IE Networks.
-Mathias has been with IE Networks for close to ten years, painstakingly climbing the ranks with his dedication and commitment to his work.
-Three out of those ten years were spent as a marketing manager, where he has shown exemplary performance, as shown in the annual sales and customer retention reports.<br/>
-Mathias has always shown initiative in the performance of his duties, even going above and beyond what is expected of him, in order to ensure that InfoTech delivers quality customer service while producing the expected outputs, well before their respective deadlines. 
-We expect this same level of dedication and commitment to be applied in his new position as one of the heads of the Marketing Department.</p>
- 
-                <div className="flex justify-center">
-                    <button
-                        type="submit"
-                        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
-                        Send
-                    </button>
+           <div className="space-y-6">
+
+              {/* first round screening Box */}
+            <div className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
+              <div className="flex justify-between items-center">
+                <h3 className="text-base font-semibold">First Round Screening Result</h3>
+                <div className="flex space-x-4">
+                  <button
+                    className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200"
+                  >
+                    Decline
+                  </button>
                 </div>
               </div>
-
-              {/* Second Box */}
-              <div className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-base font-semibold">Second Form Result</h3>
-                  <div className="flex space-x-4">
-                    <button
-                      className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200"
-                    >
-                      Approve
-                    </button>
-                    <button
-                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200"
-                    >
-                      Decline
-                    </button>
-                  </div>
-                </div>
-                <div className="mt-2 flex items-center space-x-2">
-                  <label htmlFor="score" className="block text-sm text-black font-medium">Score:</label>
-                  <input
-                    type="number"
-                    id="score"
-                    name="score"
-                    value={score}
-                    onChange={handleScoreChange}
-                    className="border-gray-300 border rounded-md px-2 py-1 text-sm"
-                    min="0" // Ensures that the score cannot be less than 0
-                    max="100" // Adjusted max to a more reasonable value
-                  />
-                </div>
-                <p className="mt-2 text-sm text-black">Dear Fasika, </p>
-                <p className="mt-2 text-sm text-black">It is with great pleasure that I am announcing the promotion of Mathias Abdisa as one of the new Marketing Directors of IE Networks.
-Mathias has been with IE Networks for close to ten years, painstakingly climbing the ranks with his dedication and commitment to his work.
-Three out of those ten years were spent as a marketing manager, where he has shown exemplary performance, as shown in the annual sales and customer retention reports.<br/>
-Mathias has always shown initiative in the performance of his duties, even going above and beyond what is expected of him, in order to ensure that InfoTech delivers quality customer service while producing the expected outputs, well before their respective deadlines. 
-We expect this same level of dedication and commitment to be applied in his new position as one of the heads of the Marketing Department.</p>
- 
-                  <div className="flex justify-center">
-                    <button
-                        type="submit"
-                        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
-                        Send
-                    </button>
-                </div>
+              <div className="mt-2 flex items-center space-x-2">
+                <label htmlFor="score" className="block text-sm text-black font-medium">Score:</label>
+                <input
+                  type="number"
+                  id="score"
+                  name="score"
+                  value={score}
+                  onChange={handleScoreChange}
+                  className="border-gray-300 border rounded-md px-2 py-1 text-sm"
+                  min="0"
+                  max="100"
+                />
               </div>
               
+              <textarea
+                value={messageContent}
+                onChange={handleMessageContentChange}
+                rows="8"
+                placeholder="Write Letter"
+                className="mt-4 border-gray-300 border rounded-md p-2 w-full text-sm">
+              </textarea>
 
-              {/* Third Box */}
-              <div className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-base font-semibold">Third Form Result</h3>
-                  <div className="flex space-x-4">
+              <div className="flex justify-center">
                     <button
-                      className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200"
-                    >
-                      Approve
+                        type="submit"
+                        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                        Send
                     </button>
-                    <button
-                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200"
-                    >
-                      Decline
-                    </button>
-                  </div>
+              </div>
+
+            </div>
+               {/* Exam Box */}
+            <div className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
+              <div className="flex justify-between items-center">
+                <h3 className="text-base font-semibold">Exam Result</h3>
+                <div className="flex space-x-4">
+                  <button
+                    className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200"
+                  >
+                    Decline
+                  </button>
                 </div>
-                <div className="mt-2 flex items-center space-x-2">
-                  <label htmlFor="score" className="block text-sm text-black font-medium">Score:</label>
-                  <input
-                    type="number"
-                    id="score"
-                    name="score"
-                    value={score}
-                    onChange={handleScoreChange}
-                    className="border-gray-300 border rounded-md px-2 py-1 text-sm"
-                    min="0" // Ensures that the score cannot be less than 0
-                    max="100" // Adjusted max to a more reasonable value
-                  />
-                </div>
-                <p className="mt-2 text-sm text-black">Dear Fasika, </p>
-                <p className="mt-2 text-sm text-black">It is with great pleasure that I am announcing the promotion of Mathias Abdisa as one of the new Marketing Directors of IE Networks.
-Mathias has been with IE Networks for close to ten years, painstakingly climbing the ranks with his dedication and commitment to his work.
-Three out of those ten years were spent as a marketing manager, where he has shown exemplary performance, as shown in the annual sales and customer retention reports.<br/>
-Mathias has always shown initiative in the performance of his duties, even going above and beyond what is expected of him, in order to ensure that InfoTech delivers quality customer service while producing the expected outputs, well before their respective deadlines. 
-We expect this same level of dedication and commitment to be applied in his new position as one of the heads of the Marketing Department.</p>
- 
-                <div className="flex justify-center">
+              </div>
+              <div className="mt-2 flex items-center space-x-2">
+                <label htmlFor="score" className="block text-sm text-black font-medium">Score:</label>
+                <input
+                  type="number"
+                  id="score"
+                  name="score"
+                  value={score}
+                  onChange={handleScoreChange}
+                  className="border-gray-300 border rounded-md px-2 py-1 text-sm"
+                  min="0"
+                  max="100"
+                />
+              </div>
+              
+              <textarea
+                value={messageContent}
+                onChange={handleMessageContentChange}
+                rows="8"
+                placeholder="Write Letter"
+                className="mt-4 border-gray-300 border rounded-md p-2 w-full text-sm">
+              </textarea>
+
+              <div className="flex justify-center">
                     <button
                         type="submit"
                         className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
@@ -282,10 +245,62 @@ We expect this same level of dedication and commitment to be applied in his new 
                     </button>
                 </div>
 
+            </div>
+             
+             {/* Interview Box */}
+
+            <div className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
+              <div className="flex justify-between items-center">
+                <h3 className="text-base font-semibold">Interview Result</h3>
+                <div className="flex space-x-4">
+                  <button
+                    className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200"
+                  >
+                    Approve
+                  </button>
+                  <button
+                    className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200"
+                  >
+                    Decline
+                  </button>
+                </div>
+              </div>
+              <div className="mt-2 flex items-center space-x-2">
+                <label htmlFor="score" className="block text-sm text-black font-medium">Score:</label>
+                <input
+                  type="number"
+                  id="score"
+                  name="score"
+                  value={score}
+                  onChange={handleScoreChange}
+                  className="border-gray-300 border rounded-md px-2 py-1 text-sm"
+                  min="0"
+                  max="100"
+                />
+              </div>
+              
+              <textarea
+                value={messageContent}
+                onChange={handleMessageContentChange}
+                rows="8"
+                placeholder="Write Letter"
+                className="mt-4 border-gray-300 border rounded-md p-2 w-full text-sm">
+              </textarea>
+
+              <div className="flex justify-center">
+                    <button
+                        type="submit"
+                        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                        Send
+                    </button>
+                </div>
 
             </div>
-              
-            </div>
+
+            
+
+           </div> 
+            
           )}
         </div>
       </div>
