@@ -1,7 +1,10 @@
 import React from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
-import ManagerNotificationDetail from "../Components/ManagerNotificationDetail";
+import ApplicantDetail from "../Components/ApplicantDetail";
+
+
+
 
 
 
@@ -12,7 +15,7 @@ function Home() {
       <>
       <div>
             <Navbar/>
-            <ManagerNotificationDetail/>     
+            <ApplicantDetail/>
             <Footer/>
       </div>
       </>

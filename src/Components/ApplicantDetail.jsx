@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const ApplicantDetail = () => {
   const [activeSection, setActiveSection] = useState('form');
-  const [emailBody, setEmailBody] = useState('');
+  const [score, setScore] = useState('');
 
   const applicant = {
     name: 'Dawit Shewnagzaw',
@@ -19,13 +19,8 @@ const ApplicantDetail = () => {
     cvLink: '/path-to-cv.pdf',
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Email body submitted:', emailBody);
-  };
-
-  const handleChange = (e) => {
-    setEmailBody(e.target.value);
+  const handleScoreChange = (e) => {
+    setScore(e.target.value);
   };
 
   return (
@@ -40,7 +35,7 @@ const ApplicantDetail = () => {
           </div>
         </div>
 
-        {/* Contact Info and Actions */}
+        {/* Contact Info */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
           <div className="space-y-2">
             <div className="flex items-center space-x-2">
@@ -51,14 +46,6 @@ const ApplicantDetail = () => {
               <FaPhone className="text-gray-500 text-sm sm:text-base" />
               <span className="text-gray-800 text-sm sm:text-base">{applicant.phone}</span>
             </div>
-          </div>
-          <div className="flex space-x-4">
-            <button className="bg-red-600 text-white px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base rounded-md hover:bg-red-700 transition duration-200">
-              Decline
-            </button>
-            <button className="bg-green-600 text-white px-4 py-2 sm:px-6 sm:py-3 text-sm sm:text-base rounded-md hover:bg-green-700 transition duration-200">
-              Approve
-            </button>
           </div>
         </div>
 
@@ -86,7 +73,7 @@ const ApplicantDetail = () => {
               className={`relative ${activeSection === 'email' ? 'text-blue-600' : 'text-black'} text-sm sm:text-base hover:text-blue-600 transition duration-200`}
               onClick={() => setActiveSection('email')}
             >
-              Email
+              Result
               {activeSection === 'email' && <span className="absolute left-0 bottom-0 w-full h-0.5 bg-blue-600"></span>}
             </Link>
           </div>
@@ -156,26 +143,149 @@ const ApplicantDetail = () => {
           )}
 
           {activeSection === 'email' && (
-            <form onSubmit={handleSubmit} className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
-              <h3 className="text-base font-semibold">Email</h3>
-              <div className="mt-2">
-                <label htmlFor="body" className="block text-sm text-black font-medium">Body:</label>
-                <textarea
-                  id="body"
-                  name="body"
-                  value={emailBody}
-                  onChange={handleChange}
-                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 sm:text-base"
-                  rows="5"
-                />
+            <div className="space-y-6">
+              {/* First Box */}
+              <div className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-base font-semibold">Form Result</h3>
+                  <div className="flex space-x-4">
+                    <button
+                      className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200"
+                    >
+                      Decline
+                    </button>
+                  </div>
+                </div>
+                <div className="mt-2 flex items-center space-x-2">
+                  <label htmlFor="score" className="block text-sm text-black font-medium">Score:</label>
+                  <input
+                    type="number"
+                    id="score"
+                    name="score"
+                    value={score}
+                    onChange={handleScoreChange}
+                    className="border-gray-300 border rounded-md px-2 py-1 text-sm"
+                    min="0" // Ensures that the score cannot be less than 0
+                    max="100" // Adjusted max to a more reasonable value
+                  />
+                </div>
+                <p className="mt-2 text-sm text-black">Dear Fasika, </p>
+                <p className="mt-2 text-sm text-black">It is with great pleasure that I am announcing the promotion of Mathias Abdisa as one of the new Marketing Directors of IE Networks.
+Mathias has been with IE Networks for close to ten years, painstakingly climbing the ranks with his dedication and commitment to his work.
+Three out of those ten years were spent as a marketing manager, where he has shown exemplary performance, as shown in the annual sales and customer retention reports.<br/>
+Mathias has always shown initiative in the performance of his duties, even going above and beyond what is expected of him, in order to ensure that InfoTech delivers quality customer service while producing the expected outputs, well before their respective deadlines. 
+We expect this same level of dedication and commitment to be applied in his new position as one of the heads of the Marketing Department.</p>
+ 
+                <div className="flex justify-center">
+                    <button
+                        type="submit"
+                        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                        Send
+                    </button>
+                </div>
               </div>
-              <button
-                type="submit"
-                className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200"
-              >
-                Send
-              </button>
-            </form>
+
+              {/* Second Box */}
+              <div className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-base font-semibold">Second Form Result</h3>
+                  <div className="flex space-x-4">
+                    <button
+                      className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200"
+                    >
+                      Decline
+                    </button>
+                  </div>
+                </div>
+                <div className="mt-2 flex items-center space-x-2">
+                  <label htmlFor="score" className="block text-sm text-black font-medium">Score:</label>
+                  <input
+                    type="number"
+                    id="score"
+                    name="score"
+                    value={score}
+                    onChange={handleScoreChange}
+                    className="border-gray-300 border rounded-md px-2 py-1 text-sm"
+                    min="0" // Ensures that the score cannot be less than 0
+                    max="100" // Adjusted max to a more reasonable value
+                  />
+                </div>
+                <p className="mt-2 text-sm text-black">Dear Fasika, </p>
+                <p className="mt-2 text-sm text-black">It is with great pleasure that I am announcing the promotion of Mathias Abdisa as one of the new Marketing Directors of IE Networks.
+Mathias has been with IE Networks for close to ten years, painstakingly climbing the ranks with his dedication and commitment to his work.
+Three out of those ten years were spent as a marketing manager, where he has shown exemplary performance, as shown in the annual sales and customer retention reports.<br/>
+Mathias has always shown initiative in the performance of his duties, even going above and beyond what is expected of him, in order to ensure that InfoTech delivers quality customer service while producing the expected outputs, well before their respective deadlines. 
+We expect this same level of dedication and commitment to be applied in his new position as one of the heads of the Marketing Department.</p>
+ 
+                  <div className="flex justify-center">
+                    <button
+                        type="submit"
+                        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                        Send
+                    </button>
+                </div>
+              </div>
+              
+
+              {/* Third Box */}
+              <div className="bg-gray-50 border border-gray-300 rounded-md p-2 sm:p-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-base font-semibold">Third Form Result</h3>
+                  <div className="flex space-x-4">
+                    <button
+                      className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-200"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-200"
+                    >
+                      Decline
+                    </button>
+                  </div>
+                </div>
+                <div className="mt-2 flex items-center space-x-2">
+                  <label htmlFor="score" className="block text-sm text-black font-medium">Score:</label>
+                  <input
+                    type="number"
+                    id="score"
+                    name="score"
+                    value={score}
+                    onChange={handleScoreChange}
+                    className="border-gray-300 border rounded-md px-2 py-1 text-sm"
+                    min="0" // Ensures that the score cannot be less than 0
+                    max="100" // Adjusted max to a more reasonable value
+                  />
+                </div>
+                <p className="mt-2 text-sm text-black">Dear Fasika, </p>
+                <p className="mt-2 text-sm text-black">It is with great pleasure that I am announcing the promotion of Mathias Abdisa as one of the new Marketing Directors of IE Networks.
+Mathias has been with IE Networks for close to ten years, painstakingly climbing the ranks with his dedication and commitment to his work.
+Three out of those ten years were spent as a marketing manager, where he has shown exemplary performance, as shown in the annual sales and customer retention reports.<br/>
+Mathias has always shown initiative in the performance of his duties, even going above and beyond what is expected of him, in order to ensure that InfoTech delivers quality customer service while producing the expected outputs, well before their respective deadlines. 
+We expect this same level of dedication and commitment to be applied in his new position as one of the heads of the Marketing Department.</p>
+ 
+                <div className="flex justify-center">
+                    <button
+                        type="submit"
+                        className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                        Send
+                    </button>
+                </div>
+
+
+            </div>
+              
+            </div>
           )}
         </div>
       </div>
